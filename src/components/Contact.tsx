@@ -79,7 +79,7 @@ const Contact = ({
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
           <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">
             <div className="text-center lg:text-left">
-              <h1 className="mb-2 text-5xl font-semibold lg:mb-1 lg:text-5xl">
+              <h1 className="mb-2 text-3xl font-semibold lg:mb-1 lg:text-4xl">
                 {title}
               </h1>
               <p className="text-muted-foreground">{description}</p>
@@ -88,6 +88,9 @@ const Contact = ({
               <h3 className="mb-6 text-center text-2xl font-semibold lg:text-left">
                 Kontakt
               </h3>
+              <p className="mb-2 text-center font-semibold lg:text-left">
+                Radek Žalský
+              </p>
               <ul className="ml-4 list-disc">
                 <li>
                   <span className="font-bold">Mobil: </span>

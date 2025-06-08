@@ -78,7 +78,7 @@ const Testimonials = () => {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="container flex justify-center py-16">
+      <div className="container flex justify-center pt-16">
         {testimonials.map((testimonial, index) => (
           <Button
             key={testimonial.id}

@@ -8,7 +8,7 @@ import { WhyUs } from "../components/WhyUs";
 import { Places } from "../components/Places";
 import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
-import { Hero } from "../components/Hero";
+import { Faq } from "../components/Faq";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -18,9 +18,10 @@ import { Hero } from "../components/Hero";
   <Welcome />
   <Features client:load />
   <About client:load />
-  <Apartments client:load />
   <WhyUs client:load />
-  <Places client:load />
+  <Apartments client:load />
   <Testimonials client:load />
+  <Places client:load />
+  <Faq client:load />
   <Contact client:load />
 </Layout>

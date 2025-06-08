@@ -16,7 +16,7 @@ export default async (req: Request, context: any) => {
     const fullName = `${firstname} ${lastname}`;
 
     await resend.emails.send({
-      from: 'Zamecek <info@yourdomain.com>', // or use 'you@resend.dev' for testing
+      from: 'onboarding@resend.dev', // or use 'you@resend.dev' for testing
       to: 'valtastudio.app@gmail.com', // Your receiving email
       subject: `📩 ${subject || "Nová zpráva z webu Zámek Čeřov"}`,
       html: `

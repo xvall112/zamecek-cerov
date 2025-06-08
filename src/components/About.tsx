@@ -38,7 +38,7 @@ const About = ({
             <h1 className="my-6 mt-0 text-4xl font-semibold text-balance lg:text-5xl">
               {title}
             </h1>
-            <p className="mb-8 max-w-xl text-muted-foreground lg:text-lg">
+            <p className="mb-8 max-w-xl text-muted-foreground">
               {description}
             </p>
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
@@ -57,7 +57,7 @@ const About = ({
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="max-h-96 w-full rounded-md object-cover"
+            className="max-h-96 w-full rounded-md object-cover mt-22 sm:mt-0"
           />
         </div>
       </div>

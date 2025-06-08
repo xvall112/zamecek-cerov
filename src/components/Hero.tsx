@@ -1,5 +1,4 @@
 import React from "react";
-import background from "../assets/zamecek-cerov-jicin.jpeg";
 import { Button } from "@/components/ui/button";
 
 interface Hero7Props {
@@ -35,10 +34,15 @@ const Hero = ({
           <p className="text-balance lg:text-lg">{description}</p>
         </div>
         <div className="flex w-full flex-col justify-center gap-2 sm:flex-row mt-10">
-          <Button asChild size="lg" className="sm:mr-4">
+          <Button asChild size="lg" className="sm:mr-1 sm:w-70">
             <a href={button.url}>{button.text}</a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="sm:ml-4">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="sm:ml-1 sm:w-70"
+          >
             <a href={button2.url}>{button2.text}</a>
           </Button>
         </div>

@@ -60,13 +60,13 @@ const WhyUs = ({
   ],
 }: WhyUsProps) => {
   return (
-    <section className="py-32 bg-primary-foreground">
+    <section className="pb-32 bg-primary-foreground">
       <div className="container">
-        <div className="mb-10 md:mb-20">
+        {/* <div className="mb-10 md:mb-20">
           <h2 className="mb-2 text-center text-3xl font-semibold lg:text-5xl">
             {heading}
           </h2>
-        </div>
+        </div> */}
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason, i) => (
             <div key={i} className="flex flex-col">
