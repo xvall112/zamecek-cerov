@@ -40,15 +40,24 @@ const Contact = ({
 
     // Simulate network request
     try {
-      const form = e.target as HTMLFormElement;
-      const data = new FormData(form);
+      const form = e.currentTarget as HTMLFormElement;
+      const formData = new FormData(form);
+
+      const data = {
+        firstname: formData.get("firstname")?.toString() || "",
+        lastname: formData.get("lastname")?.toString() || "",
+        email: formData.get("email")?.toString() || "",
+        subject: formData.get("subject")?.toString() || "",
+        message: formData.get("message")?.toString() || "",
+      };
 
       await fetch("/.netlify/functions/contact", {
         method: "POST",
-        body: data,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
-
       setFormData({
         firstname: "",
         lastname: "",
@@ -56,7 +65,6 @@ const Contact = ({
         subject: "",
         message: "",
       });
-
       alert("Děkujeme! Formulář byl odeslán.");
     } catch (error) {
       console.error("Chyba při odesílání formuláře", error);
