@@ -2,7 +2,7 @@ import type { Context } from "@netlify/functions";
 import { Resend } from "resend";
 export const prerender = false; // required to enable dynamic SSR
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const resend = new Resend('re_PLGuBoDT_4x5ZQBvZFa4kp1Fvn7CJXnp8');
 
 export default async (req: Request, context: any) => {
   if (req.method !== "POST") {
