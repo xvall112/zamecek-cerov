@@ -17,7 +17,7 @@ export default async (req: Request, context: any) => {
 
     await resend.emails.send({
       from: 'onboarding@resend.dev', // or use 'you@resend.dev' for testing
-      to: 'valtastudio.app@gmail.com', // Your receiving email
+      to: ['valtastudio.app@gmail.com', 'info@zamecekcerov.cz'], // Receiving emails
       subject: `📩 ${subject || "Nová zpráva z webu Zámek Čeřov"}`,
       html: `
         <h2>Nová zpráva z webového formuláře</h2>
