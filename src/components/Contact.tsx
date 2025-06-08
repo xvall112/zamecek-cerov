@@ -46,7 +46,7 @@ const Contact = ({
       await fetch("/.netlify/functions/contact", {
         method: "POST",
         body: data,
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: { "Content-Type": "application/json" },
       });
 
       setFormData({
