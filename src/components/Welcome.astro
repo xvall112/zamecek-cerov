@@ -7,10 +7,10 @@ import { Features } from "./Features";
 import { About } from "./About";
 ---
 
-<div id="container">
-  <img id="background" src={bg.src} alt="" fetchpriority="high" />
-  <div id="background-overlay"></div>
-  <main>
+<div id="container" class="h-full">
+  <img id="background" src={bg.src} alt="" fetchpriority="high" class="h-full"/>
+  <div id="background-overlay" class="h-full"></div>
+  <main class="h-full">
     <section class="flex items-center justify-center">
       <Hero client:load />
     </section>
@@ -23,7 +23,6 @@ import { About } from "./About";
     top: 0;
     left: 0;
     width: 100%;
-    height: 90%;
     z-index: -1;
     object-fit: cover;
   }
@@ -33,7 +32,6 @@ import { About } from "./About";
     top: 0;
     left: 0;
     width: 100%;
-    height: 90%;
     z-index: -1;
     background: linear-gradient(
       to bottom,
@@ -46,11 +44,9 @@ import { About } from "./About";
   #container {
     font-family: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
       Arial, sans-serif;
-    height: 90%;
   }
 
   main {
-    height: 90%;
     display: flex;
     justify-content: center;
   }

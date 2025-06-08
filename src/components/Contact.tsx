@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,9 +16,55 @@ interface Contact2Props {
 const Contact = ({
   title = "Kontaktujte nás...",
   description = "Napište nebo volejte o rezervaci. Napište nám, co vás zajímá, a my se vám ozveme co nejdříve.",
-  phone = "+420 721 861 641",
-  email = "zalak@post.cz",
+  phone = "+420 725 861 641",
+  email = "info@zamecekcerov.cz",
 }: Contact2Props) => {
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    // Simulate network request
+    try {
+      const form = e.target as HTMLFormElement;
+      const data = new FormData(form);
+
+      await fetch("/.netlify/functions/contact", {
+        method: "POST",
+        body: data,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      });
+
+      setFormData({
+        firstname: "",
+        lastname: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
+      alert("Děkujeme! Formulář byl odeslán.");
+    } catch (error) {
+      console.error("Chyba při odesílání formuláře", error);
+      alert("Nastala chyba. Zkuste to znovu.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section id="contact" className="py-32">
       <div className="container">
@@ -59,36 +105,77 @@ const Contact = ({
           <form
             name="contact"
             method="POST"
-            data-netlify="true"
+            onSubmit={handleSubmit}
             className="mx-auto flex max-w-3xl flex-col gap-6"
           >
-            {/* Netlify hidden field */}
-            <input type="hidden" name="form-name" value="contact" />
-            <div className="mx-auto flex max-w-3xl flex-col gap-6">
-              <div className="flex gap-4">
-                <div className="grid w-full items-center gap-1.5">
-                  <Label htmlFor="firstname">Jméno</Label>
-                  <Input type="text" id="firstname" placeholder="Jméno" />
-                </div>
-                <div className="grid w-full items-center gap-1.5">
-                  <Label htmlFor="lastname">Příjmení</Label>
-                  <Input type="text" id="lastname" placeholder="Příjmení" />
-                </div>
+            <div className="flex gap-4">
+              <div className="grid w-full items-center gap-1.5">
+                <Label htmlFor="firstname">Jméno</Label>
+                <Input
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                  placeholder="Jméno"
+                  required
+                />
               </div>
               <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="email">Email</Label>
-                <Input type="email" id="email" placeholder="Email" />
+                <Label htmlFor="lastname">Příjmení</Label>
+                <Input
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  value={formData.lastname}
+                  onChange={handleChange}
+                  placeholder="Příjmení"
+                  required
+                />
               </div>
-              <div className="grid w-full items-center gap-1.5">
-                <Label htmlFor="subject">Předmět</Label>
-                <Input type="text" id="subject" placeholder="Rezervace" />
-              </div>
-              <div className="grid w-full gap-1.5">
-                <Label htmlFor="message">Zpráva</Label>
-                <Textarea placeholder="Napiště zprávu." id="message" />
-              </div>
-              <Button type='submit' className="w-full">Odeslat</Button>
             </div>
+
+            <div className="grid w-full items-center gap-1.5">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email"
+                required
+              />
+            </div>
+
+            <div className="grid w-full items-center gap-1.5">
+              <Label htmlFor="subject">Předmět</Label>
+              <Input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Rezervace"
+                required
+              />
+            </div>
+
+            <div className="grid w-full gap-1.5">
+              <Label htmlFor="message">Zpráva</Label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Napište zprávu."
+                required
+              />
+            </div>
+
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Odesílání..." : "Odeslat"}
+            </Button>
           </form>
         </div>
       </div>
