@@ -33,7 +33,7 @@ const Hero = ({
           <h1 className="text-4xl font-extrabold lg:text-6xl">{heading}</h1>
           <p className="text-balance lg:text-lg">{description}</p>
         </div>
-        <div className="flex w-full flex-col justify-center gap-2 sm:flex-row mt-10">
+        <div className="flex w-full flex-col justify-center gap-2 sm:flex-row mt-10 animate-fade-in-scale">
           <Button asChild size="lg" className="sm:mr-1 sm:w-70">
             <a href={button.url}>{button.text}</a>
           </Button>

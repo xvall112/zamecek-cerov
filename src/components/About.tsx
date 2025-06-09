@@ -1,5 +1,14 @@
 import { Button } from "@/components/ui/button";
-import bg from "../assets/hero2.jpeg"; 
+import bg from "../assets/hero2.jpeg";
+
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface AboutProps {
   title: string;
@@ -38,27 +47,44 @@ const About = ({
             <h1 className="my-6 mt-0 text-4xl font-semibold text-balance lg:text-5xl">
               {title}
             </h1>
-            <p className="mb-8 max-w-xl text-muted-foreground">
-              {description}
-            </p>
+            <p className="mb-8 max-w-xl text-muted-foreground">{description}</p>
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
               <Button asChild>
-                <a href={buttonPrimary.href}>
-                  {buttonPrimary.label}
-                </a>
+                <a href={buttonPrimary.href}>{buttonPrimary.label}</a>
               </Button>
               <Button variant="outline" asChild>
-                <a href={buttonSecondary.href}>
-                  {buttonSecondary.label}
-                </a>
+                <a href={buttonSecondary.href}>{buttonSecondary.label}</a>
               </Button>
             </div>
           </div>
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className="max-h-96 w-full rounded-md object-cover mt-22 sm:mt-0"
-          />
+          <div className="flex justify-center">
+            <Carousel
+              opts={{
+                align: "start",
+              }}
+              orientation="vertical"
+              className="w-full md:w-lg mt-10 sm:mt-0"
+            >
+              <CarouselContent className="-mt-1 max-h-72 md:max-h-96 ">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="pt-1 md:basis-1/2 max-h-72 md:max-h-96 px-1 sm:px-3"
+                  >
+                      <div className="flex items-center justify-center">
+                        <img
+                          src={imageSrc}
+                          alt={imageAlt}
+                          className=" rounded-md object-cover sm:mt-0"
+                        />
+                      </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+          </div>
         </div>
       </div>
     </section>
